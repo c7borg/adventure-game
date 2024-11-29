@@ -11,7 +11,7 @@ $alive = true; // This is called a boolean which can be true or false
 
 
 // Game introduction
-echo "Welcome, <strong>{$playerName}!</strong> Your adventure begins with <strong>".$health."</strong> health points and <strong>$skillPoints</strong> skill points. Good luck!\n";
+echo "<p>Welcome, <strong>{$playerName}!</strong> Your adventure begins with <strong>".$health."</strong> health points and <strong>$skillPoints</strong> skill points. Good luck!</p>";
 
 include('includes/footer.php');
 ?>

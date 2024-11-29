@@ -10,48 +10,34 @@ $player['inventory'] = [
     "keys" => 8,
     "shiny gem" => 4,
     "pet" => 'pig',
-    "visitedAreas" => array(4,1,2,3),
 ];
 
 // Display unsorted inventory
-echo "<p>Unsorted Inventory: </p>";
-echo "<ul>";
-foreach ($player['inventory'] as $item => $quantity) {
-    echo "<li>$item (Qty: $quantity)</li>";
-}
-echo "</ul>";
-
+echo "<p>Original Inventory: </p>";
+echo "<pre>". print_r($player['inventory'],true). "</pre>"; 
 // sorts by value alphabetically a-z 1-9 but loses the keys
 // sort($player['inventory']); 
 // If you needed to just sort the values but keep the keys you can copy the array then sort
-// $sortedInventory = $player['inventory'];
-// sort($sortedInventory);
-// echo "<pre>";
-// print_r($sortedInventory);
-// echo "</pre>";
+echo "<p>Copy of Inventory \$sortedInventory: </p>";
+$sortedInventory = $player['inventory'];
+sort($sortedInventory);
+echo "<pre>". print_r($sortedInventory,true). "</pre>"; 
  
 // sorts alphabetically retaining the key
-// asort($player['inventory']); 
+asort($player['inventory']); 
 
-// reverse sorts by value alphabetically 9-1 z-a retaining the key
+// reverse sorts by value alphabetically Z-9-1 z-a retaining the key
 arsort($player['inventory']);
 
 // sorts alphabetically by the key
-// ksort($player['inventory']); 
+ksort($player['inventory']); 
 
 
-// Display inventory after removal
+// Display inventory after sorting
 echo "<p>Sorted Inventory: </p>";
-echo "<ul>";
-foreach ($player['inventory'] as $item => $quantity) {
-    echo "<li>$item (Qty: $quantity)</li>";
-}
 // Below shows the raw array
-echo "</ul>";
-echo "<pre>";
-// var_dump($player['inventory']);
-print_r($player['inventory']);
-echo "</pre>";
+echo "<pre>". print_r($player['inventory'],true). "</pre>";
+
 // DEMO ABOVE
 include('includes/footer.php');
 ?>

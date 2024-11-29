@@ -26,7 +26,7 @@
         background-color: #f0f0f0;
         border: 1px solid #ccc;
         width: 600px;
-        height: 700px; /* You can set this to auto if you want it to adjust based on content */
+        height: auto; /* You can set this to auto if you want it to adjust based on content */
     }
 
     footer {

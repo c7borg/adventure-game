@@ -51,6 +51,7 @@ if ($hasFoundKey) {
     echo "You couldn't find the key within the allowed attempts.<br>";
 }
 
+
 //DEMO ABOVE
 include('includes/footer.php');
 ?>

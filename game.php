@@ -169,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     //Game reset
     if($control){
         session_destroy();
-        header("Location: nav.php");
+        header("Location: game.php");
         exit;
     }
     // Handle movement
@@ -252,7 +252,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
     <div class="container">
-        <h1>PHP Adventure Game</h1>
+        <h1><img style="width:400px" src="images/phpquest-no-bg.png"></h1>
         <p><?php echo $message; ?></p>
         <p><?php echo $world[$_SESSION['current_area']]['description']; ?></p>
         <p>Inventory: <?php echo empty($_SESSION['inventory']) ? 'Nothing' : implode(", ", array_keys($_SESSION['inventory'])); ?></p>
@@ -280,7 +280,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <button type="submit" name="control" value="quit">Quit</button>
         </form>
         <pre><?php
-        //print_r($_SESSION);
+        // var_dump($_SESSION);
         //print($world[$_SESSION['current_area']]['image'])
         ?></pre>
 

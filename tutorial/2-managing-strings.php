@@ -4,42 +4,43 @@ include('includes/header.php');
 //DEMO BELOW
 
 //Create the variable
-$playerName = "Hero";
-//Construct the string
-$locationDescription = "a dark, misty forest with towering trees.<hr>";
+$playerName = "Explorer";
+//Escaping double quotes
+$locationDescription = $playerName. " enters a \"dark\", misty forest.</br>";
 //Display the string
-// echo $playerName;
-// echo $locationDescription;
+echo $locationDescription;
 
-//Concatenate a string to a varible
-$locationDescription = "Enters " . $locationDescription;
-
-//Using periods and quotes to form a string
-$locationDescription1 = "1." . $playerName . " enters " . $locationDescription;
+//Using single quotes
+$locationDescription = $playerName. ' enters a "dark", misty forest.</br>';
 //Display the string
-echo $locationDescription1;
+echo $locationDescription;
 
-//Using just quotation marks
-$locationDescription2 = "2. $playerName enters $locationDescription";
+//Using single quotes
+$locationDescription = '$playerName enters a "dark", misty forest.</br>';
 //Display the string
-echo $locationDescription2;
+echo $locationDescription;
 
-//Using quotation marks and curl braces for clarity and joining words
-$locationDescription3 = "3.{$playerName} enters {$locationDescription}";
 
-echo $locationDescription3;
+echo "<h2>Different ways of using echo</h2>";
 
-echo "<h2>Displaying php strings</h2>";
+$myNewLocation = "The cave echoed with sounds from the past";
 
-echo "<p>{$locationDescription}</p>";
+echo "<p>{$myNewLocation}</p>";
 ?>
 
-<p><?php echo $locationDescription; ?></p>
+<p><?php echo $myNewLocation; ?></p>  
 
-<p><?= $locationDescription ?></p>
-
+<p><?= $myNewLocation ?></p>
 
 <?php
+echo "<h2>Shorthand</h2>";
+
+$myExtraBit = " haunting the silence";
+$myNewLocation .= $myExtraBit; //Instead of $myNewLocation = $myNewLocation . $myExtraBit;
+
+echo $myNewLocation;
+
+
 //DEMO ABOVE
 include('includes/footer.php');
 ?>

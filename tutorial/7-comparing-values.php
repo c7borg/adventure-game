@@ -56,6 +56,9 @@ if ($health > $enemyHealth) {
 
 
 echo "<h4>Greater than - using ternary operators saving as a variable</h4>";
+// Ternary 
+// condition ? value_if_true : value_if_false;
+
 // Event: Check if health is above a mid-level mark using ternary operator
 $midLevelThreshold = 50;
 $message = ($health > $midLevelThreshold) 
@@ -65,11 +68,9 @@ echo "<p>{$message}</p>";
 
 
 echo "<h4>Less than - using ternary operators echoing directly</h4>";
-// Final check before a dangerous encounter
-$dangerZoneThreshold = 25;
-echo $health < $dangerZoneThreshold
-    ? "<p>Your health is critically low! Avoid any risky encounters. (Health: {$health} < Danger Zone: {$dangerZoneThreshold})</p>"
-    : "<p>Your health is sufficient for the next challenge. (Health: {$health} >= Danger Zone: {$dangerZoneThreshold})</p>";
+// Unlocking a bonus
+$score = 100;
+echo $score >= 100 ? "Bonus unlocked!" : "Keep trying!";
 
 // DEMO ABOVE
 include('includes/footer.php');

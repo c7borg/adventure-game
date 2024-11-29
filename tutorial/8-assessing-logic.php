@@ -28,11 +28,14 @@ $player['inventory'] = [
     "flashlight" => 1,
 ];
 $intelligence = 80;
+
+// Demonstrating the difference between !empty and isset
 $hasMap = !empty($player['inventory']['map']);
 // $hasMap = isset($player['inventory']['map']);
-echo "<pre>";
+
+
 var_dump($hasMap);
-echo "</pre>";
+
 //Referencing an item and its quatity
 if($hasMap && $intelligence > 70){
     echo "<p>The player has a map and has a qty of {$player['inventory']['map']}</p>";
