@@ -1,9 +1,4 @@
 <?php
-// Enable error reporting
-error_reporting(E_ALL);        // Report all PHP errors
-ini_set('display_errors', 1);  // Display errors on the page
-
-session_start();
 // Define the game world with 20 locations
 $world = [
     1 => [
@@ -98,7 +93,7 @@ $world = [
         "description" => "You are on a narrow, winding path. The sound of distant waves can be heard.",
         "directions" => ["south" => 12, "west" => 14],
         "actions" => [],
-        "image" => "images/13-winding.jpg"  // path to background image
+        "image" => "images/13-winding-path.jpg"  // path to background image
     ],
     14 => [
         "description" => "A small beach is here, with gentle waves lapping against the shore. A boat lies abandoned nearby.",
@@ -149,142 +144,6 @@ $world = [
         "description" => "You find yourself at your home! Congratulations, you've completed your adventure and made it back safely!",
         "directions" => [],
         "actions" => [],
-        "image" => "images/forest.jpg"  // path to background image
+        "image" => "images/cottage.jpg"  // path to background image
     ]
 ];
-
-// Initialize player inventory and starting area if they don't exist
-if (!isset($_SESSION['current_area'])) {
-    $_SESSION['current_area'] = 1;
-    $_SESSION['inventory'] = []; // Start with an empty inventory
-}
-
-// Handle player input
-$message = "";
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $control = $_POST["control"] ?? null;
-    $direction = $_POST["direction"] ?? null;
-    $action = $_POST["action"] ?? null;
-    $current_area = $_SESSION['current_area'];
-    //Game reset
-    if($control){
-        session_destroy();
-        header("Location: game.php");
-        exit;
-    }
-    // Handle movement
-    if ($direction && isset($world[$current_area]["directions"][$direction])) {
-        $_SESSION['current_area'] = $world[$current_area]["directions"][$direction];
-        $message = "You move $direction.";
-    } elseif ($direction) {
-        $message = "You can't go that way.";
-    }
-
-    // Handle actions
-    if ($action && isset($world[$current_area]["actions"][$action])) {
-        $result = $world[$current_area]["actions"][$action];
-        $message = is_callable($result) ? $result() : $result;
-
-        // Check if this action grants an item
-        if (isset($world[$current_area]["give_item"][$action])) {
-            $item = $world[$current_area]["give_item"][$action];
-            if (!isset($_SESSION['inventory'][$item])) {
-                $_SESSION['inventory'][$item] = true; // Add item to inventory
-                $message .= "<br>You have found a $item!";
-            }
-        }
-    } elseif ($action) {
-        $message = "Nothing happens.";
-    }
-}
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>PHP Adventure Game</title>
-    <style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        <?php
-            // Set the background image based on the current area
-            $current_image = $world[$_SESSION['current_area']]['image'] ?? 'images/default.jpg'; // Default image if none is set
-            echo "background-image: url('$current_image');";
-        ?>
-        background-size: cover;
-        background-position: center;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        font-size:1.2em;
-    }
-
-    .container {
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
-        color: #fff; /* White text for readability */
-        border-radius: 10px; /* Rounded corners */
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for pop effect */
-        width: 400px;
-        height: 80vh;
-        text-align: center;
-    }
-
-    button {
-        padding: 10px 20px;
-        background-color: #4CAF50; /* Button color */
-        color: #fff; /* Button text color */
-        border: none;
-        border-radius: 20px; /* More rounded corners */
-        cursor: pointer;
-        margin: 5px;
-        transition: background-color 0.3s ease; /* Smooth color transition on hover */
-    }
-
-    button:hover {
-        background-color: #45a049; /* Darker shade on hover */
-    }
-</style>
-
-</head>
-<body>
-    <div class="container">
-        <h1><img style="width:400px" src="images/phpquest-no-bg.png"></h1>
-        <p><?php echo $message; ?></p>
-        <p><?php echo $world[$_SESSION['current_area']]['description']; ?></p>
-        <p>Inventory: <?php echo empty($_SESSION['inventory']) ? 'Nothing' : implode(", ", array_keys($_SESSION['inventory'])); ?></p>
-
-        <form method="post">
-            <h3>Choose a Direction:</h3>
-            <?php foreach ($world[$_SESSION['current_area']]['directions'] as $direction => $area): ?>
-                <button type="submit" name="direction" value="<?php echo $direction; ?>">
-                    Go <?php echo ucfirst($direction); ?>
-                </button>
-            <?php endforeach; ?>
-        </form>
-
-        <form method="post">
-            <h3>Available Actions:</h3>
-            <?php foreach ($world[$_SESSION['current_area']]['actions'] as $action => $response): ?>
-                <button type="submit" name="action" value="<?php echo $action; ?>">
-                    <?php echo ucfirst($action); ?>
-                </button>
-            <?php endforeach; ?>
-          
-        </form>
-        <form method="post">
-        <h3>Game Control:</h3>
-        <button type="submit" name="control" value="quit">Quit</button>
-        </form>
-        <pre><?php
-        // var_dump($_SESSION);
-        //print($world[$_SESSION['current_area']]['image'])
-        ?></pre>
-
-        
-    </div>
-</body>
-</html>
