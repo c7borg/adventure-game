@@ -47,7 +47,7 @@ echo "<p>{$world[2]['description']}</p>";
 $selectedWorld = 2;
 
     echo "<p><strong>Location {$selectedWorld}</strong>: {$world[$selectedWorld]['description']}</p>";
-    echo "<p>Image:<br><img src='../{$world[$selectedWorld]['image']}' width='100px'></p>";
+    echo "<p>Image:<br><img src='../game/{$world[$selectedWorld]['image']}' width='100px'></p>";
     
     if (!empty($world[$selectedWorld]['directions'])) {
         echo "<p>Directions:</p><ul>";
