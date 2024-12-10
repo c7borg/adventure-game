@@ -17,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "<p>You stand at a crossroads, unsure of which path to take.</p>";
     }
+} else {
+    echo "<p>You start your journey which shall you take.</p>";
 }
 ?>
 

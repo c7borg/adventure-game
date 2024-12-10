@@ -4,6 +4,7 @@ error_reporting(E_ALL);        // Report all PHP errors
 ini_set('display_errors', 1);  // Display errors on the page
 
 session_start();
+
 include('world-array.php'); // Defines the game world
 
 // Initialize player inventory and starting area if they don't exist
@@ -11,7 +12,7 @@ if (!isset($_SESSION['current_area'])) {
     $_SESSION['current_area'] = 1;
     $_SESSION['inventory'] = []; // Start with an empty inventory
 }
-
+ 
 // Handle player input
 $message = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -53,14 +54,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 // Set the background image based on the current area
 $current_image = $world[$_SESSION['current_area']]['image'] ?? 'images/default.jpg'; // Default image if none is set
+
+$dynamic_version = time(); 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PHP Adventure Game</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>PHP Quest Part I</title>
+    <link rel="stylesheet" href="css/styles.css?<?= $dynamic_version ?>">
     <style>
 
     body { background-image: url('<?= $current_image ?>'); }

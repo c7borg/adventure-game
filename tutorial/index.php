@@ -8,9 +8,9 @@ include('includes/header.php');
 
 <p>I'll take you through the key concepts of PHP that will give you the knowledge to create your own applications.</p>
 
-<p>In this tutorial we'll use the concepts to build a simple adventure game that you could use to expand on.</p>
+<p>In this tutorial we'll use the concepts to build a simple <a href='../game/'>adventure game</a> that you could use to expand on.</p>
 
-<p>I advise you to down load the zip folder from GitHUB and play around with the examples.</p>
+<p>I advise you to down load the <a href='https://github.com/c7borg/adventure-game/archive/refs/heads/main.zip'>zip folder from GitHUB</a> and play around with the examples.</p>
 
 <h3>Please use the menu below and to get the most out of the tutorial it is best to follow in order</h3>
 

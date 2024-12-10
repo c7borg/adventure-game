@@ -46,6 +46,7 @@ echo "<h4>Complex Switching</h4>";
 // Generate a random number between 1 and 100
 $outcome = rand(1, 100);
 $playerLevel = 5; // Example player level for conditional logic
+$health = 50;
 
 echo "You rolled a $outcome.\n";
 

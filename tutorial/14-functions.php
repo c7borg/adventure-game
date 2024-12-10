@@ -37,13 +37,13 @@ function applyBonus($baseValue, $bonusPercentage = 10) {
 // Calling the function with arguments
 $baseDamage = 50;
 $damageWithBonus = applyBonus($baseDamage, 20); // Applying a 20% bonus
-echo "You strike with a powerful blow, dealing $damageWithBonus damage!"; 
+echo "<p>You strike with a powerful blow, dealing $damageWithBonus damage!</p>"; 
 // Outputs: You strike with a powerful blow, dealing 60 damage!
 
 // Reusing the function for a different scenario
 $baseGold = 100;
 $goldWithBonus = applyBonus($baseGold); // Defaults to a 10% bonus
-echo "You negotiate with the merchant and earn $goldWithBonus gold for your efforts!"; 
+echo "<p>You negotiate with the merchant and earn $goldWithBonus gold for your efforts!</p>"; 
 
 echo "<h4>Variable Scope - Globals</h4>";
 
@@ -68,11 +68,23 @@ spendGold2(10); // Outputs: Remaining gold: 90
 
 function spendGold3($goldCoins, $amount) {
     $goldCoins -= $amount;
-    return "We have removed a further $amount coins from the global variable leaving $goldCoins gold coins";
+    return "<p>We have removed a further $amount coins from the global variable leaving $goldCoins gold coins</p>";
 }
 
 $goldCoinsResult = spendGold3($goldCoins, 10);
 echo $goldCoinsResult;
+
+echo "<h4>Check if a function is defined 'is_callable()'</h4>";
+
+// function hello() {
+//     return "Hello, World!";
+// }
+
+if (is_callable('hello')) {
+    echo hello(); // Outputs: Hello, World!
+} else {
+    echo "The function 'hello' is not callable.";
+}
 
 //DEMO ABOVE
 include('includes/footer.php');

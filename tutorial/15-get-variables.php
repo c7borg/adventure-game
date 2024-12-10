@@ -14,18 +14,19 @@ if ($choice === 'forest') {
 } else {
     echo "You stand at a crossroads, unsure of which path to take.";
 }
+?>
 
-// Provide links to test different choices
-echo '<h4>Choose Your Path:</h4>';
-echo '<ul>';
-echo '<li><a href="?choice=forest">Go to the Forest</a></li>';
-echo '<li><a href="?choice=castle">Visit the Castle</a></li>';
-echo '<li><a href="?choice=start">Stay at the Crossroads</a></li>';
-echo '</ul>';
+<!-- Provide links to test different choices -->
+<h4>Choose Your Path:</h4>
+<ul>
+    <li><a href="?choice=forest">Go to the Forest</a></li>
+    <li><a href="?choice=castle">Visit the Castle</a></li>
+    <li><a href="?choice=start">Stay at the Crossroads</a></li>
+</ul>
 
 
 
-
+<?php
 //DEMO ABOVE
 include('includes/footer.php');
 ?>

@@ -53,7 +53,7 @@ $world = [
                     "You unlock the door and step into a library filled with ancient books." : 
                     "The door is locked. You need a key to enter.";
             }
-        ],
+        ], 
         "image" => "images/7-stone-house.jpg"  // path to background image
     ],
     8 => [

@@ -15,7 +15,6 @@ foreach ($inventory as $item) {
 }
 echo "</ul>";
 
-echo "<p>Gold earned from quests:</p>";
 
 echo "<h4>Foreach loops - Simple example</h4>";
 $totalGold = 0;
@@ -28,11 +27,11 @@ for ($quest = 1; $quest <= 5; $quest++) { // Loop through 5 quests
 echo "</ul>";
 echo "<p>Total Gold: $totalGold</p>";
 
-echo "<h4>Foreach loops - Advanced example</h4>";
+echo "<h4>For loops - Advanced example</h4>";
 echo "<p>Prepare for battle!</p>";
 
 // Player starts with 100 health
-$playerHealth = 35;
+$playerHealth = 100;
 
 for ($enemy = 1; $enemy <= 3; $enemy++) { // Loop through 3 enemies
     $enemyHealth = rand(20, 50); // Random health for each enemy
